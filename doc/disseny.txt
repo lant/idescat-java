@@ -27,12 +27,14 @@ API Indicadors. (http://www.idescat.cat/api/indicadors/)
 operació dades: Agafa les dades d'un o més indicadors.
 ------------------------------------------------------
 paràmetres 
-	- i -> indicadors (identificadors)
+	- i -> llista dels identificadors (separats per comes) dels indicadors dels quals es retornarà informació
 	- tt -> temps transcorregut.
-	- ...
+	- max -> màxim indicadors a mostrar
+	- min -> mínims d'indicadors a retornar.
 
 operació nodes: Retorna la llista d'indicadors possibles.
 ---------------------------------------------------------
+	- i -> indicadors a mostrar.
 
 
 

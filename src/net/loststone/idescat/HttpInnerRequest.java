@@ -8,6 +8,11 @@ import org.apache.commons.httpclient.HttpMethod;
 import org.apache.commons.httpclient.HttpStatus;
 import org.apache.commons.httpclient.methods.GetMethod;
 
+/**
+ * Classe que utilitza commons-httpclient per realitzar les peticions
+ * HTTP a l'API.
+ * @author marc
+ */
 public class HttpInnerRequest implements InnerRequest {
 		
 	HttpClient httpClient; 

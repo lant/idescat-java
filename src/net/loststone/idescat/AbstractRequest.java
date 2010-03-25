@@ -9,11 +9,20 @@ import net.loststone.idescat.common.Versio;
 
 import org.apache.commons.httpclient.HttpException;
 
+/**
+ * Classe base de les Requests. 
+ *
+ */
 public abstract class AbstractRequest {
 
-	private static final String PARAM_LANG = "?lang=";
-	private static final String PARAM_CODIFICACIO = "?enc=";
+	protected final String BASE = "http://api.idescat.cat/"; 
+	protected final String PARAM_LANG = "?lang=";
+	protected final String PARAM_CODIFICACIO = "?enc=";
 	
+	/**
+	 * Aquest objecte és el que fa la petició en si, ja sigui HTTP o 
+	 * qualsevol altre.
+	 */
 	protected InnerRequest innerRequest; 
 	
 	protected String lang;
@@ -43,17 +52,36 @@ public abstract class AbstractRequest {
 		this.codifcacio = PARAM_CODIFICACIO + codificacio.nom();
 	}
 	
+	/**
+	 * Mètode que realitza la connexió i consulta a la API.
+	 * @throws HttpException En cas de que hi hagi algun error en la consulta HTTP.
+	 * @throws IOException
+	 */
 	public void get() throws HttpException, IOException {
 		this.innerRequest.get(this.getUrl());
 	}
 	
+	/**
+	 * Retorna el resultat de l'operació 'get' 
+	 * @return El resultat, ja sigui en xml, json o qualsevol altre format sempre i quant
+	 * s'hagi realitzat la consulta. null altrament. 
+	 * @throws IOException
+	 */
 	public String getResult() throws IOException {
 		return this.innerRequest.getResult();
 	}
 	
+	/**
+	 * Mostra si la consulta s'ha realitzat correctament.
+	 * @return Cert si la consulta ha funcionat, fals altrament. 
+	 */
 	public boolean getSuccess() {
 		return this.innerRequest.getSuccess();
 	}
 	
+	/**
+	 * Mètode que retorna la URL que s'utilitzarà per realitzar la consulta. 
+	 * @return La url que s'utilitzarà per fer la consulta a l'API.
+	 */
 	public abstract String getUrl();
 }
