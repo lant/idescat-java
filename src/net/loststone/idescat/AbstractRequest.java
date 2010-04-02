@@ -16,8 +16,9 @@ import org.apache.commons.httpclient.HttpException;
 public abstract class AbstractRequest {
 
 	protected final String BASE = "http://api.idescat.cat/"; 
-	protected final String PARAM_LANG = "?lang=";
-	protected final String PARAM_CODIFICACIO = "?enc=";
+	protected final String PARAM_LANG = "?lang=cat";
+	protected final String PARAM_CODIFICACIO = "&enc=UTF-8";
+	protected final String AMPERSAND="&";
 	
 	/**
 	 * Aquest objecte Žs el que fa la petici— en si, ja sigui HTTP o 
@@ -25,10 +26,10 @@ public abstract class AbstractRequest {
 	 */
 	protected InnerRequest innerRequest; 
 	
-	protected String lang;
+	protected String lang = "";
 	protected String versio; 
 	protected String format; 
-	protected String codifcacio;
+	protected String codifcacio ="";
 	
 	public AbstractRequest(InnerRequest innerRequest) {
 		this.innerRequest = innerRequest;
@@ -38,6 +39,10 @@ public abstract class AbstractRequest {
 	
 	public void setLang(Idioma idioma) {
 		this.lang = PARAM_LANG+idioma.indicador();
+	}
+	
+	public String getLang() {
+		return this.lang;
 	}
 	
 	public void setVersio(Versio versio) {
@@ -50,6 +55,10 @@ public abstract class AbstractRequest {
 	
 	public void setCodificacio(Codificacio codificacio) {
 		this.codifcacio = PARAM_CODIFICACIO + codificacio.nom();
+	}
+	
+	public String getCodificacio() {
+		return this.codifcacio;
 	}
 	
 	/**

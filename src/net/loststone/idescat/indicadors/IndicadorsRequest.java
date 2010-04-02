@@ -27,11 +27,11 @@ public class IndicadorsRequest extends AbstractRequest {
 	// lista d'indicadors a mostrar.
 	private List<Integer> indicadors;
 	// nœmero mˆxim d'indicadors que volem.
-	private int max; 
+	private int max=6; 
 	// nœmero m’nim d'indicadors que volem.
-	private int min; 
+	private int min=6; 
 	// temps transcorregut des de la seva publicaci—. 
-	private int tt; 
+	private int tt=0; 
 	private operacio op; 
 	
 	
@@ -53,20 +53,33 @@ public class IndicadorsRequest extends AbstractRequest {
 		resultat.append(this.op.toString());
 		resultat.append(".");
 		resultat.append(this.format);
+		
 		// parˆmetres generals
-			// TODO lang
-			// TODO enc 
+		resultat.append(getLang());
+		resultat.append(getCodificacio());		
 		
 		// parˆmetres espec’fics
-		
 		if (!this.getIndicadors().isEmpty()) {
-			// TODO afegir indicadors.
+			resultat.append(this.AMPERSAND);
+			boolean first = true; 
+			for (Integer _indicador : this.getIndicadors()) {
+				if (!first) {
+					resultat.append(",");
+				}
+				resultat.append(_indicador);
+				first = false;
+			}
 		}
 		
 		// en cas de que sigui l'operacio dades mirem si hi ha els 
 		// demes parˆmetres.
 		if (this.op == operacio.dades) {
-			
+			resultat.append(this.AMPERSAND);
+			resultat.append(getMax());
+			resultat.append(this.AMPERSAND);
+			resultat.append(getMin());
+			resultat.append(this.AMPERSAND);
+			resultat.append(this.getTt());
 		}
 		
 		return resultat.toString();
