@@ -1,8 +1,8 @@
 package net.loststone.idescat.common;
 
 public enum Idioma {
-	EN ("en","Anglès"),
-	CA ("ca","Català"),
+	EN ("en","Angles"),
+	CA ("ca","Catala"),
 	ES ("es","Espanyol");
 	
 	private String m; 
