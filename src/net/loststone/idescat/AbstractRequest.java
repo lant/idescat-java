@@ -15,13 +15,13 @@ import org.apache.commons.httpclient.HttpException;
  */
 public abstract class AbstractRequest {
 
-	protected final String BASE = "http://api.idescat.cat/"; 
-	protected final String PARAM_LANG = "?lang=cat";
-	protected final String PARAM_CODIFICACIO = "&enc=UTF-8";
-	protected final String AMPERSAND="&";
+	protected String BASE = "http://api.idescat.cat/"; 
+	protected String PARAM_LANG = "?lang=cat";
+	protected String PARAM_CODIFICACIO = "&enc=UTF-8";
+	protected String AMPERSAND="&";
 	
 	/**
-	 * Aquest objecte és el que fa la petició en si, ja sigui HTTP o 
+	 * Aquest objecte ÔøΩs el que fa la peticiÔøΩ en si, ja sigui HTTP o 
 	 * qualsevol altre.
 	 */
 	protected InnerRequest innerRequest; 
@@ -38,11 +38,11 @@ public abstract class AbstractRequest {
 	}
 	
 	public void setLang(Idioma idioma) {
-		this.lang = PARAM_LANG+idioma.indicador();
+		this.lang =idioma.indicador();
 	}
 	
 	public String getLang() {
-		return this.lang;
+		return  PARAM_LANG+this.lang;
 	}
 	
 	public void setVersio(Versio versio) {
@@ -50,19 +50,19 @@ public abstract class AbstractRequest {
 	}
 	
 	public void setFormat(Format format) {
-		this.format = "."+format.nom();
+		this.format = format.nom();
 	}
 	
 	public void setCodificacio(Codificacio codificacio) {
-		this.codifcacio = PARAM_CODIFICACIO + codificacio.nom();
+		this.codifcacio = codificacio.nom();
 	}
 	
 	public String getCodificacio() {
-		return this.codifcacio;
+		return PARAM_CODIFICACIO + this.codifcacio;
 	}
 	
 	/**
-	 * Mètode que realitza la connexió i consulta a la API.
+	 * MÔøΩtode que realitza la connexiÔøΩ i consulta a la API.
 	 * @throws HttpException En cas de que hi hagi algun error en la consulta HTTP.
 	 * @throws IOException
 	 */
@@ -71,7 +71,7 @@ public abstract class AbstractRequest {
 	}
 	
 	/**
-	 * Retorna el resultat de l'operació 'get' 
+	 * Retorna el resultat de l'operaciÔøΩ 'get' 
 	 * @return El resultat, ja sigui en xml, json o qualsevol altre format sempre i quant
 	 * s'hagi realitzat la consulta. null altrament. 
 	 * @throws IOException
@@ -89,8 +89,8 @@ public abstract class AbstractRequest {
 	}
 	
 	/**
-	 * Mètode que retorna la URL que s'utilitzarà per realitzar la consulta. 
-	 * @return La url que s'utilitzarà per fer la consulta a l'API.
+	 * MÔøΩtode que retorna la URL que s'utilitzarÔøΩ per realitzar la consulta. 
+	 * @return La url que s'utilitzarÔøΩ per fer la consulta a l'API.
 	 */
 	public abstract String getUrl();
 }

@@ -7,11 +7,11 @@ import net.loststone.idescat.AbstractRequest;
 import net.loststone.idescat.InnerRequest;
 
 /**
- * Petici— a l'API d'indicadors: 
+ * Peticiï¿½ a l'API d'indicadors: 
  * http://www.idescat.cat/api/indicadors/
  * 
- * Aquesta classe permet gestionar els parˆmetres que s'utilitzaran a l'hora de fer la petici—
- * espec’fica a l'API d'indicadors. 
+ * Aquesta classe permet gestionar els parï¿½metres que s'utilitzaran a l'hora de fer la peticiï¿½
+ * especï¿½fica a l'API d'indicadors. 
  * 
  * @author marc
  *
@@ -21,16 +21,16 @@ public class IndicadorsRequest extends AbstractRequest {
 	public enum operacio { nodes, dades}
 	
 	
-	// el servei Žs indicadors.
+	// el servei ï¿½s indicadors.
 	private final String servei = "indicadors";
 
 	// lista d'indicadors a mostrar.
 	private List<Integer> indicadors;
-	// nœmero mˆxim d'indicadors que volem.
+	// nï¿½mero mï¿½xim d'indicadors que volem.
 	private int max=6; 
-	// nœmero m’nim d'indicadors que volem.
+	// nï¿½mero mï¿½nim d'indicadors que volem.
 	private int min=6; 
-	// temps transcorregut des de la seva publicaci—. 
+	// temps transcorregut des de la seva publicaciï¿½. 
 	private int tt=0; 
 	private operacio op; 
 	
@@ -51,14 +51,13 @@ public class IndicadorsRequest extends AbstractRequest {
 		resultat.append(this.versio);
 		resultat.append("/");
 		resultat.append(this.op.toString());
-		resultat.append(".");
 		resultat.append(this.format);
 		
-		// parˆmetres generals
+		// parï¿½metres generals
 		resultat.append(getLang());
 		resultat.append(getCodificacio());		
 		
-		// parˆmetres espec’fics
+		// parï¿½metres especï¿½fics
 		if (!this.getIndicadors().isEmpty()) {
 			resultat.append(this.AMPERSAND);
 			boolean first = true; 
@@ -72,7 +71,7 @@ public class IndicadorsRequest extends AbstractRequest {
 		}
 		
 		// en cas de que sigui l'operacio dades mirem si hi ha els 
-		// demes parˆmetres.
+		// demes parï¿½metres.
 		if (this.op == operacio.dades) {
 			resultat.append(this.AMPERSAND);
 			resultat.append(getMax());
@@ -102,7 +101,7 @@ public class IndicadorsRequest extends AbstractRequest {
 	}
 	
 	/**
-	 * Afegeix un indicador a la llista d'indicadors que s'utilitzarˆ per parˆmetre.
+	 * Afegeix un indicador a la llista d'indicadors que s'utilitzarï¿½ per parï¿½metre.
 	 * @param indicador
 	 */
 	public void addIndicador(Integer indicador) {
@@ -110,7 +109,7 @@ public class IndicadorsRequest extends AbstractRequest {
 	}
 
 	/**
-	 * Retorna en nœmero mˆxim d'indicadors que ens retornarˆ l'API.
+	 * Retorna en nï¿½mero mï¿½xim d'indicadors que ens retornarï¿½ l'API.
 	 * @return
 	 */
 	public int getMax() {
@@ -118,7 +117,7 @@ public class IndicadorsRequest extends AbstractRequest {
 	}
 
 	/**
-	 * Posa en nœmero mˆxim d'indicadors que ens retornarˆ l'API.
+	 * Posa en nï¿½mero mï¿½xim d'indicadors que ens retornarï¿½ l'API.
 	 * @param max
 	 */
 	public void setMax(int max) {
@@ -126,7 +125,7 @@ public class IndicadorsRequest extends AbstractRequest {
 	}
 
 	/**
-	 * Retorna el nœmero m’nim d'indicadors que ens retornarˆ l'API.
+	 * Retorna el nï¿½mero mï¿½nim d'indicadors que ens retornarï¿½ l'API.
 	 * @return
 	 */
 	public int getMin() {
@@ -134,7 +133,7 @@ public class IndicadorsRequest extends AbstractRequest {
 	}
 
 	/**
-	 * Posa el nœmero m’nim d'indicadors que ens retornarˆ l'API.
+	 * Posa el nï¿½mero mï¿½nim d'indicadors que ens retornarï¿½ l'API.
 	 * @param min
 	 */
 	public void setMin(int min) {
