@@ -18,8 +18,7 @@ import net.loststone.idescat.InnerRequest;
  */
 public class IndicadorsRequest extends AbstractRequest {
 
-	public enum operacio { nodes, dades}
-	
+	public enum operacio { nodes, dades }
 	
 	// el servei ï¿½s indicadors.
 	private final String servei = "indicadors";
@@ -140,13 +139,24 @@ public class IndicadorsRequest extends AbstractRequest {
 		this.min = min;
 	}
 
+	/**
+	 * Retorna el parˆmetre que especifica el temps transcorregut des de la publicaci—
+	 * de les dades.
+	 * @return
+	 */
 	public int getTt() {
 		return tt;
 	}
 
+	/**
+	 * Especifica el parˆmetre qe indica el temps transcorregut des de la publicaci— de 
+	 * les dades.
+	 * @param tt
+	 */
 	public void setTt(int tt) {
 		this.tt = tt;
 	}
+	
 	
 	public void setOperacio(operacio op) {
 		this.op = op; 

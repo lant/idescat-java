@@ -10,13 +10,16 @@ import net.loststone.idescat.common.Versio;
 import org.apache.commons.httpclient.HttpException;
 
 /**
- * Classe base de les Requests. 
- *
+ * Classe base de les Requests. Conté la URL de la petició i permet configurar els 
+ * paràmetres comuns de tots els mètodes d'Idescat.
  */
 public abstract class AbstractRequest {
 
+	// URL d'idescat.
 	protected String BASE = "http://api.idescat.cat/"; 
+	// per defecte retorna el resultat en catala.
 	protected String PARAM_LANG = "?lang=cat";
+	// per defecte retorna el resultat en codificació UTF-8
 	protected String PARAM_CODIFICACIO = "&enc=UTF-8";
 	protected String AMPERSAND="&";
 	
@@ -37,26 +40,50 @@ public abstract class AbstractRequest {
 		this.versio = "v1";
 	}
 	
+	/**
+	 * Configura la petició perquè retorni el resultat en l'idioma especificat.
+	 * @param idioma Idioma en el que es retornarà el resultat.
+	 */
 	public void setLang(Idioma idioma) {
 		this.lang =idioma.indicador();
 	}
 	
+	/**
+	 * Retorna el paràmetre HTTP que s'utilitzarà per especificar l'idioma.
+	 * @return
+	 */
 	public String getLang() {
 		return  PARAM_LANG+this.lang;
 	}
 	
+	/**
+	 * Configura la versió de l'API d'Idescat a utilitzar.
+	 * @param versio
+	 */
 	public void setVersio(Versio versio) {
 		this.versio = versio.nom();
 	}
 	
+	/**
+	 * Configura el format en el qual es retornaran les dades.
+	 * @param format Format en el que es retornaran les dades. 
+	 */
 	public void setFormat(Format format) {
 		this.format = format.nom();
 	}
 	
+	/**
+	 * Configura la codificació en que es retornaran les dades. 
+	 * @param codificacio
+	 */
 	public void setCodificacio(Codificacio codificacio) {
 		this.codifcacio = codificacio.nom();
 	}
 	
+	/**
+	 * Retorna el paràmetre HTTP que s'utilitzarà per la codificació del resultat.
+	 * @return
+	 */
 	public String getCodificacio() {
 		return PARAM_CODIFICACIO + this.codifcacio;
 	}

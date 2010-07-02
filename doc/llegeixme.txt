@@ -1,0 +1,29 @@
+::::::::::::::::::
+:: IDESCAT-JAVA ::  
+::::::::::::::::::
+
+-- Continguts -- 
+-----------------------------------------------------------
+
+ [ Tutorial ]
+ [ Més detalls sobre la API ]
+ [ Contacte ]
+
+
+-- Tutorial -- 
+-----------------------------------------------------------
+La api és bastant senzilla, hi ha un exemple d'utilització al fitxer: 
+
+'src/net/loststone/idescat/tutorial/Test.java'
+
+La única part que potser no és del tot clara i directa és la creació de les peticions a la API, que es creen mitjançant una Factory. La resta és ben senzill.
+
+
+-- Més detalls sobre la API --
+-----------------------------------------------------------
+La API és bàsicament un objecte Factory que crea objectes 'Request', cada API d'idescat té el seu objecte, aquests es poden reutilitzar tantes vegades com faci falta. 
+
+-- Contacte -- 
+-----------------------------------------------------------
+
+Podeu des
