@@ -1,2 +1,9 @@
+0.2.0 (04/07/2010)
+- Afegits els metodes i objectes per utilitzar l'api 'poblacions'
+
+0.X.X (XX/XX/XXXX)
+- Afegit tutorial
+- Acabat el codi per l'api 'indicadors'
+
 0.0.1 (17/03/2010)
 - Comencem!

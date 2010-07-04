@@ -69,7 +69,9 @@ public abstract class AbstractRequest {
 	 * @param format Format en el que es retornaran les dades. 
 	 */
 	public void setFormat(Format format) {
-		this.format = format.nom();
+		if (formatPermes(format)) {
+			this.format = format.nom();
+		}
 	}
 	
 	/**
@@ -120,4 +122,45 @@ public abstract class AbstractRequest {
 	 * @return La url que s'utilitzarÔøΩ per fer la consulta a l'API.
 	 */
 	public abstract String getUrl();
+
+	/**
+	 * Operació que torna cert si l'operació permet aquest format de sortida. No totes les operacions
+	 * suporten els mateixos format.s
+	 * @param format 
+	 * @return Cert sii la operació permet aquest format de sortida.
+	 */
+	protected abstract boolean formatPermes(Format format);
+	
+	/**
+	 * Retorna el servei seleccionat. 
+	 * @return
+	 */
+	protected abstract String getServei();
+
+	/**
+	 * Retorna la operació seleccionada.
+	 * @return
+	 */
+	protected abstract String getOperacioString();
+	
+	/**
+	 * Totes les operacions ténen paràmetres comuns. Aquest mètode els inicialitza.
+	 * @param resultat
+	 */
+	protected void inicialitzarParametres(StringBuffer resultat) {
+		// http://api.idescat.cat
+		resultat.append(this.BASE);
+		resultat.append(getServei());
+		resultat.append("/");
+		resultat.append(this.versio);
+		resultat.append("/");
+		resultat.append(this.getOperacioString());
+		resultat.append(this.format);
+		
+		// parÔøΩmetres generals
+		resultat.append(getLang());
+		resultat.append(getCodificacio());		
+	}
+
+
 }

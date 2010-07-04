@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.loststone.idescat.AbstractRequest;
 import net.loststone.idescat.InnerRequest;
+import net.loststone.idescat.common.Format;
 
 /**
  * Peticiï¿½ a l'API d'indicadors: 
@@ -43,20 +44,10 @@ public class IndicadorsRequest extends AbstractRequest {
 	public String getUrl() {
 		StringBuffer resultat = new StringBuffer();
 		
-		// http://api.idescat.cat
-		resultat.append(this.BASE);
-		resultat.append(this.servei);
-		resultat.append("/");
-		resultat.append(this.versio);
-		resultat.append("/");
-		resultat.append(this.op.toString());
-		resultat.append(this.format);
+		// crear la petici— base amb els parˆmetres comuns.
+		this.inicialitzarParametres(resultat);
 		
-		// parï¿½metres generals
-		resultat.append(getLang());
-		resultat.append(getCodificacio());		
-		
-		// parï¿½metres especï¿½fics
+		// parï¿½metres especï¿½fics del servei 'Indicadors'
 		if (!this.getIndicadors().isEmpty()) {
 			resultat.append(this.AMPERSAND);
 			boolean first = true; 
@@ -164,6 +155,27 @@ public class IndicadorsRequest extends AbstractRequest {
 	
 	public operacio getOperacio() {
 		return op; 
+	}
+
+	@Override
+	protected boolean formatPermes(Format format) {
+		if ((format == Format.JSON) || (format == Format.PHP) || (format == Format.XML))
+			return true;
+		else 
+			return false;
+	}
+
+	@Override
+	protected String getOperacioString() {
+		if (this.op != null)
+			return this.op.toString();
+		else 
+			return null;
+	}
+
+	@Override
+	protected String getServei() {
+		return this.servei;
 	}
 	
 }

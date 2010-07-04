@@ -7,7 +7,6 @@
 
  [ Tutorial ]
  [ Més detalls sobre la API ]
- [ Contacte ]
 
 
 -- Tutorial -- 
@@ -22,8 +21,3 @@ La única part que potser no és del tot clara i directa és la creació de les 
 -- Més detalls sobre la API --
 -----------------------------------------------------------
 La API és bàsicament un objecte Factory que crea objectes 'Request', cada API d'idescat té el seu objecte, aquests es poden reutilitzar tantes vegades com faci falta. 
-
--- Contacte -- 
------------------------------------------------------------
-
-Podeu des
