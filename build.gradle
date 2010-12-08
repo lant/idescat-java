@@ -1,7 +1,7 @@
 apply plugin: 'java'
-defaultTasks 'build'
+defaultTasks 'build', 'copyToLib'
 
-version = '1.0'
+version = '0.2.1'
 
 repositories {
 	mavenCentral()
@@ -13,3 +13,7 @@ dependencies {
 	testCompile group: 'junit', name: 'junit', version: '4.+'
 }
 
+task copyToLib(type: Copy) {
+    into "lib"
+    from configurations.runtime
+}

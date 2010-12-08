@@ -1,3 +1,8 @@
+0.2.1 (08/12/2010)
+- Canviada l'estructura del projecte. 
+- Substituit ant + ivy per gradle.
+- Millorada documentació.
+
 0.2.0 (04/07/2010)
 - Afegits els metodes i objectes per utilitzar l'api 'poblacions'
 
