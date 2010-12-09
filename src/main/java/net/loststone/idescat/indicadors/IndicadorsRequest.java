@@ -5,6 +5,7 @@ import java.util.List;
 
 import net.loststone.idescat.AbstractRequest;
 import net.loststone.idescat.InnerRequest;
+import net.loststone.idescat.InvalidUrlException;
 import net.loststone.idescat.common.Format;
 
 /**
@@ -41,7 +42,7 @@ public class IndicadorsRequest extends AbstractRequest {
 	}
 
 	@Override
-	public String getUrl() {
+	public String getUrl() throws InvalidUrlException {
 		StringBuffer resultat = new StringBuffer();
 		
 		// crear la petici— base amb els parˆmetres comuns.
@@ -68,7 +69,7 @@ public class IndicadorsRequest extends AbstractRequest {
 			resultat.append(this.AMPERSAND);
 			resultat.append(getMin());
 			resultat.append(this.AMPERSAND);
-			resultat.append(this.getTt());
+			resultat.append(getTt());
 		}
 		
 		return resultat.toString();

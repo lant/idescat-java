@@ -6,6 +6,7 @@ import java.util.List;
 
 import net.loststone.idescat.AbstractRequest;
 import net.loststone.idescat.InnerRequest;
+import net.loststone.idescat.InvalidUrlException;
 import net.loststone.idescat.common.Format;
 
 /**
@@ -155,7 +156,7 @@ public class PoblacionsRequest extends AbstractRequest {
 	}
 	
 	@Override
-	public String getUrl() {
+	public String getUrl() throws InvalidUrlException {
 		boolean setFirstParam = true;
 		StringBuffer resultat = new StringBuffer();
 		
@@ -226,10 +227,4 @@ public class PoblacionsRequest extends AbstractRequest {
 		return resultat.toString();
 	}
 	
-	private void setConector(StringBuffer resultat, boolean first) {
-		if (first)
-			resultat.append("?");
-		else 
-			resultat.append(this.AMPERSAND);
-	}
 }

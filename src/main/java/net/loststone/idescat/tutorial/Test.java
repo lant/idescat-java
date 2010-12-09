@@ -53,11 +53,9 @@ public class Test {
       // Aquest mètode invoca la petició HTTP amb els paràmetres utilitzats i guarda
       // el resultat.
       request.get();
-    } catch (HttpException ex) {
+    } catch (Exception ex) {
       Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (IOException ex) {
-      Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
-    }
+    } 
     // si tot ha anat b√© retornem en resultat (en xml)
     System.out.println(request.getResult());
   }

@@ -8,6 +8,7 @@ import net.loststone.idescat.common.Idioma;
 import net.loststone.idescat.common.Versio;
 
 import org.apache.commons.httpclient.HttpException;
+import net.loststone.idescat.InvalidUrlException; 
 
 /**
  * Classe base de les Requests. Conté la URL de la petició i permet configurar els 
@@ -95,7 +96,7 @@ public abstract class AbstractRequest {
 	 * @throws HttpException En cas de que hi hagi algun error en la consulta HTTP.
 	 * @throws IOException
 	 */
-	public void get() throws HttpException, IOException {
+	public void get() throws HttpException, IOException, InvalidUrlException {
 		this.innerRequest.get(this.getUrl());
 	}
 	
@@ -121,7 +122,7 @@ public abstract class AbstractRequest {
 	 * MÔøΩtode que retorna la URL que s'utilitzarÔøΩ per realitzar la consulta. 
 	 * @return La url que s'utilitzarÔøΩ per fer la consulta a l'API.
 	 */
-	public abstract String getUrl();
+	public abstract String getUrl() throws InvalidUrlException;
 
 	/**
 	 * Operació que torna cert si l'operació permet aquest format de sortida. No totes les operacions
@@ -138,13 +139,13 @@ public abstract class AbstractRequest {
 	protected abstract String getServei();
 
 	/**
-	 * Retorna la operació seleccionada.
+	 * Retorna la operaciÛ seleccionada.
 	 * @return
 	 */
 	protected abstract String getOperacioString();
 	
 	/**
-	 * Totes les operacions ténen paràmetres comuns. Aquest mètode els inicialitza.
+	 * Totes les operacions tÈnen par‡metres comuns. Aquest mËtode els inicialitza.
 	 * @param resultat
 	 */
 	protected void inicialitzarParametres(StringBuffer resultat) {
@@ -157,10 +158,16 @@ public abstract class AbstractRequest {
 		resultat.append(this.getOperacioString());
 		resultat.append(this.format);
 		
-		// parÔøΩmetres generals
+		// par‡metres generals
 		resultat.append(getLang());
 		resultat.append(getCodificacio());		
 	}
 
+	protected void setConector(StringBuffer resultat, boolean first) {
+		if (first)
+			resultat.append("?");
+		else 
+			resultat.append(this.AMPERSAND);
+	}
 
 }
