@@ -9,11 +9,11 @@ import net.loststone.idescat.common.Format;
 import net.loststone.idescat.InvalidUrlException;
 
 /**
- * Petició a l'API d'emex
+ * Peticio a l'API d'emex
  * http://www.idescat.cat/api/emex/
  * 
- * Aquesta classe permet gestionar els paràmetres que s'utilitzaran a l'hora de fer la petició
- * específica a l'API d'emex
+ * Aquesta classe permet gestionar els parametres que s'utilitzaran a l'hora de fer la peticio
+ * especifica a l'API d'emex
  * 
  * @author marc
  *
@@ -22,7 +22,7 @@ public class EmexRequest extends AbstractRequest {
 
 	public enum operacio { nodes, dades }
 	
-	// el servei és emex
+	// el servei es emex
 	private final String servei = "emex";
 
 	private int municipiId = -1; 
@@ -53,21 +53,21 @@ public class EmexRequest extends AbstractRequest {
 	public String getUrl() throws InvalidUrlException {
 		StringBuffer resultat = new StringBuffer();
 		
-		// crear la petició base amb els paràmetres comuns.
+		// crear la peticio base amb els parametres comuns.
 		this.inicialitzarParametres(resultat);
 		
 		// en cas de que sigui l'operacio dades mirem si hi ha els 
-		// demes paràmetres.
+		// demes parametres.
 		if (this.op == operacio.dades) {
 			if (getMunicipiId() != -1) {
-				throw new InvalidUrlException("L'operació 'dades' del mètode 'emex' necessita un camp 'id'");			
+				throw new InvalidUrlException("L'operacio 'dades' del metode 'emex' necessita un camp 'id'");			
 			}
 			setConector(resultat,true);
 			resultat.append("id=");
 			resultat.append(getMunicipiId());
 		}
 
-		// mirar si hi ha una llista d'identificadors específics a retornar
+		// mirar si hi ha una llista d'identificadors especifics a retornar
 		if (!indicadors.isEmpty()) {
 			setConector(resultat, false);	
 			resultat.append("i=");
@@ -81,7 +81,7 @@ public class EmexRequest extends AbstractRequest {
 			}
 		}
 	
-		// l'operació 'nodes' no té paràmetres, per tant, no cal mirar res. 	
+		// l'operacio 'nodes' no te parametres, per tant, no cal mirar res. 	
 		return resultat.toString();
 	}
 
@@ -116,7 +116,7 @@ public class EmexRequest extends AbstractRequest {
 
 	// TODO codi repetit posar-ho en una classe apart, junt amb el bucle
 	// que els converteix en una llista separada amb comes i que tingui una 
-	// classe genèrica
+	// classe generica
 	/**
 	 * Retorna la llista d'indicadors a utilitzar.
 	 * @return

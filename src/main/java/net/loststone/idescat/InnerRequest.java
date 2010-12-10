@@ -5,8 +5,8 @@ import java.io.IOException;
 import org.apache.commons.httpclient.HttpException;
 
 /**
- * Aquesta interficie és la que han d'implementar les classes que fan el request
- * a la API en si. Han de gestionar els errors de connexió i altres per separar-ho
+ * Aquesta interficie es la que han d'implementar les classes que fan el request
+ * a la API en si. Han de gestionar els errors de connexio i altres per separar-ho
  * del domini. 
  * @author lant
  *
@@ -14,23 +14,23 @@ import org.apache.commons.httpclient.HttpException;
 public interface InnerRequest {
 	
 	/**
-	 * Mètode que realitza la connexió al servidor i invoca el mètode GET donada una url.
-	 * @param url URL a la qual es farà l'HTTP GET
+	 * Metode que realitza la connexio al servidor i invoca el metode GET donada una url.
+	 * @param url URL a la qual es fara l'HTTP GET
 	 * @throws HttpException
 	 * @throws IOException
 	 */
 	void get(String url) throws HttpException, IOException;
 	
 	/**
-	 * Mètode que retorna el resultat del mètode GET.
+	 * Metode que retorna el resultat del metode GET.
 	 * @return El resultat en format String.
 	 * @throws IOException
 	 */
 	String getResult() throws IOException;
 	
 	/**
-	 * Mètode que ens diu si la connexió s'ha realizat correctament.
-	 * @return cert en cas de que tot hagi anat bé, fals altrament.
+	 * Metode que ens diu si la connexio s'ha realizat correctament.
+	 * @return cert en cas de que tot hagi anat be, fals altrament.
 	 */
 	boolean getSuccess();
 }

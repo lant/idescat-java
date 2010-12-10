@@ -11,7 +11,7 @@ import org.apache.commons.httpclient.HttpException;
  * Classe que serveix d'exemple per utilitzar l'API.
  * 
  * Per utilitzar l'API es s'han d'utilitzar 2 classes: 
- * Una Factory, que és la que crea les peticions i les peticions en si. 
+ * Una Factory, que es la que crea les peticions i les peticions en si. 
  * @author marc
  */
 public class Test {
@@ -19,7 +19,7 @@ public class Test {
   /**
    * Per fer crides a la API d'idescat haurem d'utilitzar un objecte que implementi
    * la classe AbstractRequest. Aquests objectes no es poden instanciar directament
-   * per tant s'haurà d'utilitzar una 'factory'. En aquest cas HttpFactory, que 
+   * per tant s'haura d'utilitzar una 'factory'. En aquest cas HttpFactory, que 
    * realitza les peticions utilitzant la llibreria apache http-client.
    */
   HttpFactory factory;
@@ -40,8 +40,8 @@ public class Test {
 
   public void start() throws IOException {
 	
-    // Aquest mètode crea un objecte de la classe IndicadorsRequest, un cop 
-	// tinguem l'objecte el podrem configurar (els paràmetres de la crida REST) i 
+    // Aquest metode crea un objecte de la classe IndicadorsRequest, un cop 
+    // tinguem l'objecte el podrem configurar (els parametres de la crida REST) i 
     // la podrem invocar, per tot seguit agafar-ne el resultat.
     request = factory.getIndicadorsRequest();
     
@@ -50,13 +50,13 @@ public class Test {
     // especifiquem quin tipus d'operaic√≥ volem
     request.setOperacio(IndicadorsRequest.operacio.dades);
     try {
-      // Aquest mètode invoca la petició HTTP amb els paràmetres utilitzats i guarda
+      // Aquest metode invoca la peticio HTTP amb els parametres utilitzats i guarda
       // el resultat.
       request.get();
     } catch (Exception ex) {
       Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
     } 
-    // si tot ha anat b√© retornem en resultat (en xml)
+    // si tot ha anat be retornem en resultat (en xml)
     System.out.println(request.getResult());
   }
 

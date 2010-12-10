@@ -29,8 +29,8 @@ public class HttpInnerRequest implements InnerRequest {
 	}
 	
 	/**
-	 * Invoca el mètode HTTP Get a la URL que es pasa per paràmetre.
-	 * @param url URL a la que es farà el GET.
+	 * Invoca el metode HTTP Get a la URL que es pasa per parametre.
+	 * @param url URL a la que es fara el GET.
 	 */
 	public void get(String url) throws HttpException, IOException {
 		method = new GetMethod(url);
@@ -39,8 +39,8 @@ public class HttpInnerRequest implements InnerRequest {
 	}
 
 	/**
-	 * Retorna el resultat de la petició HTTP/GET.
-	 * @return El resultat en la codificació i format especificat en cas de que la petició 
+	 * Retorna el resultat de la peticio HTTP/GET.
+	 * @return El resultat en la codificacio i format especificat en cas de que la peticio 
 	 * HTTP hagi funcionat, null altrament.
 	 */
 	public String getResult() throws IOException {
@@ -51,7 +51,7 @@ public class HttpInnerRequest implements InnerRequest {
 	}
 
 	/**
-	 * Retorna cert sii la petició s'ha executat en èxit. Fals altrament. 
+	 * Retorna cert sii la peticio s'ha executat en exit. Fals altrament. 
 	 */
 	public boolean getSuccess() {
 		if (executada)

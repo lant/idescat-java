@@ -11,8 +11,8 @@ import org.apache.commons.httpclient.HttpException;
 import net.loststone.idescat.InvalidUrlException; 
 
 /**
- * Classe base de les Requests. Conté la URL de la petició i permet configurar els 
- * paràmetres comuns de tots els mètodes d'Idescat.
+ * Classe base de les Requests. Conte la URL de la peticio i permet configurar els 
+ * parametres comuns de tots els metodes d'Idescat.
  */
 public abstract class AbstractRequest {
 
@@ -20,12 +20,12 @@ public abstract class AbstractRequest {
 	protected String BASE = "http://api.idescat.cat/"; 
 	// per defecte retorna el resultat en catala.
 	protected String PARAM_LANG = "?lang=cat";
-	// per defecte retorna el resultat en codificació UTF-8
+	// per defecte retorna el resultat en codificacio UTF-8
 	protected String PARAM_CODIFICACIO = "&enc=UTF-8";
 	protected String AMPERSAND="&";
 	
 	/**
-	 * Aquest objecte ÔøΩs el que fa la peticiÔøΩ en si, ja sigui HTTP o 
+	 * Aquest objecte es el que fa la peticio en si, ja sigui HTTP o 
 	 * qualsevol altre.
 	 */
 	protected InnerRequest innerRequest; 
@@ -42,15 +42,15 @@ public abstract class AbstractRequest {
 	}
 	
 	/**
-	 * Configura la petició perquè retorni el resultat en l'idioma especificat.
-	 * @param idioma Idioma en el que es retornarà el resultat.
+	 * Configura la peticio perque retorni el resultat en l'idioma especificat.
+	 * @param idioma Idioma en el que es retornara el resultat.
 	 */
 	public void setLang(Idioma idioma) {
 		this.lang =idioma.indicador();
 	}
 	
 	/**
-	 * Retorna el paràmetre HTTP que s'utilitzarà per especificar l'idioma.
+	 * Retorna el parametre HTTP que s'utilitzara per especificar l'idioma.
 	 * @return
 	 */
 	public String getLang() {
@@ -58,7 +58,7 @@ public abstract class AbstractRequest {
 	}
 	
 	/**
-	 * Configura la versió de l'API d'Idescat a utilitzar.
+	 * Configura la versio de l'API d'Idescat a utilitzar.
 	 * @param versio
 	 */
 	public void setVersio(Versio versio) {
@@ -76,7 +76,7 @@ public abstract class AbstractRequest {
 	}
 	
 	/**
-	 * Configura la codificació en que es retornaran les dades. 
+	 * Configura la codificacio en que es retornaran les dades. 
 	 * @param codificacio
 	 */
 	public void setCodificacio(Codificacio codificacio) {
@@ -84,7 +84,7 @@ public abstract class AbstractRequest {
 	}
 	
 	/**
-	 * Retorna el paràmetre HTTP que s'utilitzarà per la codificació del resultat.
+	 * Retorna el parametre HTTP que s'utilitzara per la codificacio del resultat.
 	 * @return
 	 */
 	public String getCodificacio() {
@@ -92,7 +92,7 @@ public abstract class AbstractRequest {
 	}
 	
 	/**
-	 * MÔøΩtode que realitza la connexiÔøΩ i consulta a la API.
+	 * Metode que realitza la connexio i consulta a la API.
 	 * @throws HttpException En cas de que hi hagi algun error en la consulta HTTP.
 	 * @throws IOException
 	 */
@@ -101,7 +101,7 @@ public abstract class AbstractRequest {
 	}
 	
 	/**
-	 * Retorna el resultat de l'operaciÔøΩ 'get' 
+	 * Retorna el resultat de l'operacio 'get' 
 	 * @return El resultat, ja sigui en xml, json o qualsevol altre format sempre i quant
 	 * s'hagi realitzat la consulta. null altrament. 
 	 * @throws IOException
@@ -119,16 +119,16 @@ public abstract class AbstractRequest {
 	}
 	
 	/**
-	 * MÔøΩtode que retorna la URL que s'utilitzarÔøΩ per realitzar la consulta. 
-	 * @return La url que s'utilitzarÔøΩ per fer la consulta a l'API.
+	 * Metode que retorna la URL que s'utilitzara per realitzar la consulta. 
+	 * @return La url que s'utilitzara per fer la consulta a l'API.
 	 */
 	public abstract String getUrl() throws InvalidUrlException;
 
 	/**
-	 * Operació que torna cert si l'operació permet aquest format de sortida. No totes les operacions
+	 * Operacio que torna cert si l'operacio permet aquest format de sortida. No totes les operacions
 	 * suporten els mateixos format.s
 	 * @param format 
-	 * @return Cert sii la operació permet aquest format de sortida.
+	 * @return Cert sii la operacio permet aquest format de sortida.
 	 */
 	protected abstract boolean formatPermes(Format format);
 	
@@ -139,13 +139,13 @@ public abstract class AbstractRequest {
 	protected abstract String getServei();
 
 	/**
-	 * Retorna la operaciÛ seleccionada.
+	 * Retorna la operacio seleccionada.
 	 * @return
 	 */
 	protected abstract String getOperacioString();
 	
 	/**
-	 * Totes les operacions tÈnen par‡metres comuns. Aquest mËtode els inicialitza.
+	 * Totes les operacions tenen parametres comuns. Aquest metode els inicialitza.
 	 * @param resultat
 	 */
 	protected void inicialitzarParametres(StringBuffer resultat) {
@@ -158,7 +158,7 @@ public abstract class AbstractRequest {
 		resultat.append(this.getOperacioString());
 		resultat.append(this.format);
 		
-		// par‡metres generals
+		// parametres generals
 		resultat.append(getLang());
 		resultat.append(getCodificacio());		
 	}

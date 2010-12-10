@@ -10,11 +10,11 @@ import net.loststone.idescat.InvalidUrlException;
 import net.loststone.idescat.common.Format;
 
 /**
- * Peticiï¿½ a l'API de poblacions: 
+ * Peticio a l'API de poblacions: 
  * http://www.idescat.cat/api/pob/
  * 
- * Aquesta classe permet gestionar els parï¿½metres que s'utilitzaran a l'hora de fer la peticiï¿½
- * especï¿½fica a l'API de poblacions. 
+ * Aquesta classe permet gestionar els parametres que s'utilitzaran a l'hora de fer la peticio
+ * especifica a l'API de poblacions. 
  * 
  * @author marc
  *
@@ -25,14 +25,14 @@ public class PoblacionsRequest extends AbstractRequest {
 	public enum tipus { cat, prov, com, mun, ec, es, np, dis}
 	public enum order { tipus, nom }
 	
-	// el servei ï¿½s indicadors.
+	// el servei es poblacio
 	private final String servei = "pob";
 
 	// especifics del servei
 	private String filtreQ = null;
 	private ArrayList<tipus> filtresTipus = null;
 
-	// especifics de l'operaic— 'cerca':
+	// especifics de l'operaico cerca
 	private ArrayList<Integer> simList = null;
 	boolean selec = false; 
 	order orderBy = order.tipus; 
@@ -48,8 +48,8 @@ public class PoblacionsRequest extends AbstractRequest {
 
 	/**
 	 * Inicialitza el filtre Q. 
-	 * Selecciona entitats territorials que continguin la cadena de carˆcters especificada.
-	 * Podeu trobar mŽs informaci— a: http://www.idescat.cat/api/pob/#a1.2.1.1
+	 * Selecciona entitats territorials que continguin la cadena de caracters especificada.
+	 * Podeu trobar ms informacio a: http://www.idescat.cat/api/pob/#a1.2.1.1
 	 * @param q
 	 */
 	public void setFiltreQ(String q) {
@@ -61,9 +61,9 @@ public class PoblacionsRequest extends AbstractRequest {
 	}
 	
 	/**
-	 * El filtre tipus (especifica els tipus de poblaci— que volem) pot ser mœltiple, per tant
-	 * aquesta operaci— afegeix els tipus sempre i quant no estiguin repetits. 
-	 * Podeu trobar mŽs informaci— a: http://www.idescat.cat/api/pob/#a1.2.1.2
+	 * El filtre tipus (especifica els tipus de poblacio que volem) pot ser multiple, per tant
+	 * aquesta operacio afegeix els tipus sempre i quant no estiguin repetits. 
+	 * Podeu trobar mes informacie a: http://www.idescat.cat/api/pob/#a1.2.1.2
 	 * @param filtre
 	 */
 	public void afegirFiltreTipus(tipus filtre) {
@@ -81,9 +81,9 @@ public class PoblacionsRequest extends AbstractRequest {
 	}
 	
 	/**
-	 * Afegeix un parˆmetre sim a la llista sempre i quan el nœmero sigui vˆlid (0,1 o 2) i
+	 * Afegeix un parametre sim a la llista sempre i quan el numero sigui valid (0,1 o 2) i
 	 * no estigui ja a la llista.
-	 * Podeu trobar mŽs informaci— a: http://www.idescat.cat/api/pob/#a1.2.2.1
+	 * Podeu trobar mes informacio a: http://www.idescat.cat/api/pob/#a1.2.2.1
 	 */
 	public void afegirSim(Integer sim) {
 		if ( (sim >= 0) && (sim <= 2) && !simList.contains(sim)) {
@@ -96,9 +96,9 @@ public class PoblacionsRequest extends AbstractRequest {
 	}
 	
 	/**
-	 * Especifica el parˆmetre selec. Si el boleˆ Žs 1 la resposta nomŽs inclourˆ un resultat, en cas de que 
-	 * sigui 0, inclourˆ tota la llista de resultats.
-	 * Podeu trobar mŽs informaci— a: http://www.idescat.cat/api/pob/#a1.2.2.2
+	 * Especifica el parametre selec. Si el bolea es 1 la resposta nomes incloura un resultat, en cas de que 
+	 * sigui 0, incloura tota la llista de resultats.
+	 * Podeu trobar mes informacio a: http://www.idescat.cat/api/pob/#a1.2.2.2
 	 * @param selec
 	 */
 	public void setSelec(boolean selec) {
@@ -110,15 +110,15 @@ public class PoblacionsRequest extends AbstractRequest {
 	}
 	
 	/**
-	 * Selecciona si els resultats tornen ordenats per tipus d'entitat o bŽ per ordre alfabtic.
+	 * Selecciona si els resultats tornen ordenats per tipus d'entitat o be per ordre alfabetic.
 	 */
 	public void setOrderBy(order t) {
 		this.orderBy = t;
 	}
 	
 	/**
-	 * Especifica la posici— per la qual comenaran els resultats.
-	 * Podeu trobar mŽs informaci— a: http://www.idescat.cat/api/pob/#a1.2.2.4
+	 * Especifica la posicio per la qual comencaran els resultats.
+	 * Podeu trobar mes informacio a: http://www.idescat.cat/api/pob/#a1.2.2.4
 	 */
 	public void setPosicio(int posicio) {
 		if (posicio >= 0)
@@ -127,12 +127,12 @@ public class PoblacionsRequest extends AbstractRequest {
 	
 	@Override
 	protected boolean formatPermes(Format format) {
-		// aquesta operaci— permet tots els formats.
+		// aquesta operacio permet tots els formats.
 		return true;
 	}
 
 	/**
-	 * Indica quina operaci— volem utilitzar.
+	 * Indica quina operacio volem utilitzar.
 	 * @param op
 	 */
 	public void setOperacio(operacio op) {
@@ -140,7 +140,7 @@ public class PoblacionsRequest extends AbstractRequest {
 	}
 
 	/**
-	 * Retorna l'operaci— seleccionada.
+	 * Retorna l'operacio seleccionada.
 	 * @return
 	 */
 	public operacio getOperacio() {
@@ -160,7 +160,7 @@ public class PoblacionsRequest extends AbstractRequest {
 		boolean setFirstParam = true;
 		StringBuffer resultat = new StringBuffer();
 		
-		// crear la petici— base amb els parˆmetres comuns.
+		// crear la peticio base amb els parametres comuns.
 		this.inicialitzarParametres(resultat);
 		
 		// posem el fitreQ en cas de que hi sigui.
@@ -184,10 +184,10 @@ public class PoblacionsRequest extends AbstractRequest {
 			}
 		}
 		
-		// afegim els parˆmetres expec’fics de l'operaci— cerca.
+		// afegim els parametres expecifics de l'operacio cerca.
 		if (this.op == operacio.cerca ) {
 		
-			// parˆmetre sim.
+			// parametre sim.
 			if (!getSim().isEmpty()) {
 				setConector(resultat, setFirstParam);
 				setFirstParam = false;
@@ -201,7 +201,7 @@ public class PoblacionsRequest extends AbstractRequest {
 				}
 			}
 			
-			// parˆmetre selec
+			// parametre selec
 			setConector(resultat, setFirstParam);
 			setFirstParam = false;
 			resultat.append("selec=");
@@ -211,13 +211,13 @@ public class PoblacionsRequest extends AbstractRequest {
 				resultat.append("0");
 			}
 			
-			// parˆmetre orderBy
+			// parametre orderBy
 			setConector(resultat, setFirstParam);
 			setFirstParam = false;
 			resultat.append("orderby=");
 			resultat.append(orderBy.toString());
 			
-			// parˆmetre posicio
+			// parametre posicio
 			setConector(resultat, setFirstParam);
 			setFirstParam = false;
 			resultat.append("posicio=");
