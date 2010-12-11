@@ -148,6 +148,7 @@ public abstract class AbstractRequest {
 	 * Totes les operacions tenen parametres comuns. Aquest metode els inicialitza.
 	 * @param resultat
 	 */
+	// TODO com a variable protegida de la classe abstracte.
 	protected void inicialitzarParametres(StringBuffer resultat) {
 		// http://api.idescat.cat
 		resultat.append(this.BASE);

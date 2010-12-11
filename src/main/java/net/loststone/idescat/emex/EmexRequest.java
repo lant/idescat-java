@@ -1,4 +1,4 @@
-package net.loststone.idescat.indicadors;
+package net.loststone.idescat.emex;
 
 import java.util.ArrayList;
 import java.util.List;
