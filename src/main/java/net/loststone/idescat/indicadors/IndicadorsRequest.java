@@ -26,7 +26,7 @@ public class IndicadorsRequest extends AbstractRequest {
 	private final String servei = "indicadors";
 
 	// lista d'indicadors a mostrar.
-	private List<Integer> indicadors;
+	private List<String> indicadors;
 	// numero maxim d'indicadors que volem.
 	private int max=6; 
 	// numero minim d'indicadors que volem.
@@ -38,7 +38,7 @@ public class IndicadorsRequest extends AbstractRequest {
 	
 	public IndicadorsRequest(InnerRequest innerRequest) {
 		super(innerRequest);
-		indicadors = new ArrayList<Integer>();
+		indicadors = new ArrayList<String>();
 	}
 
 	@Override
@@ -52,9 +52,11 @@ public class IndicadorsRequest extends AbstractRequest {
 		if (!this.getIndicadors().isEmpty()) {
 			resultat.append(this.AMPERSAND);
 			boolean first = true; 
-			for (Integer _indicador : this.getIndicadors()) {
+			for (String _indicador : this.getIndicadors()) {
 				if (!first) {
 					resultat.append(",");
+				} else {
+				  resultat.append("i=");
 				}
 				resultat.append(_indicador);
 				first = false;
@@ -65,10 +67,13 @@ public class IndicadorsRequest extends AbstractRequest {
 		// demes parametres.
 		if (this.op == operacio.dades) {
 			resultat.append(this.AMPERSAND);
+			resultat.append("max=");
 			resultat.append(getMax());
 			resultat.append(this.AMPERSAND);
+			resultat.append("min=");
 			resultat.append(getMin());
 			resultat.append(this.AMPERSAND);
+			resultat.append("tt=");
 			resultat.append(getTt());
 		}
 		
@@ -79,7 +84,7 @@ public class IndicadorsRequest extends AbstractRequest {
 	 * Retorna la llista d'indicadors a utilitzar.
 	 * @return
 	 */
-	public List<Integer> getIndicadors() {
+	public List<String> getIndicadors() {
 		return indicadors;
 	}
 
@@ -87,7 +92,7 @@ public class IndicadorsRequest extends AbstractRequest {
 	 * Inserta una llista d'indicarods a mostrar.
 	 * @param indicadors
 	 */
-	public void setIndicadors(List<Integer> indicadors) {
+	public void setIndicadors(List<String> indicadors) {
 		this.indicadors = indicadors;
 	}
 	
@@ -95,7 +100,7 @@ public class IndicadorsRequest extends AbstractRequest {
 	 * Afegeix un indicador a la llista d'indicadors que s'utilitzara per parametre.
 	 * @param indicador
 	 */
-	public void addIndicador(Integer indicador) {
+	public void addIndicador(String indicador) {
 		this.indicadors.add(indicador);
 	}
 

@@ -37,7 +37,7 @@ public abstract class AbstractRequest {
 	
 	public AbstractRequest(InnerRequest innerRequest) {
 		this.innerRequest = innerRequest;
-		this.format = ".xml";
+		this.format = "xml";
 		this.versio = "v1";
 	}
 	
@@ -157,6 +157,7 @@ public abstract class AbstractRequest {
 		resultat.append(this.versio);
 		resultat.append("/");
 		resultat.append(this.getOperacioString());
+    resultat.append(".");
 		resultat.append(this.format);
 		
 		// parametres generals
