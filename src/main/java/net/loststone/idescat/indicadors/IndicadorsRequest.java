@@ -20,7 +20,7 @@ import net.loststone.idescat.common.Format;
  */
 public class IndicadorsRequest extends AbstractRequest {
 
-	public enum operacio { nodes, dades }
+	public static enum operacio { nodes, dades }
 	
 	// el servei es indicadors.
 	private final String servei = "indicadors";
