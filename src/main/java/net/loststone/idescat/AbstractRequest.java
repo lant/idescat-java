@@ -19,9 +19,9 @@ public abstract class AbstractRequest {
 	// URL d'idescat.
 	protected String BASE = "http://api.idescat.cat/"; 
 	// per defecte retorna el resultat en catala.
-	protected String PARAM_LANG = "?lang=cat";
+	protected String PARAM_LANG = "?lang=";
 	// per defecte retorna el resultat en codificacio UTF-8
-	protected String PARAM_CODIFICACIO = "&enc=UTF-8";
+	protected String PARAM_CODIFICACIO = "&enc=";
 	protected String AMPERSAND="&";
 	
 	/**
@@ -30,10 +30,10 @@ public abstract class AbstractRequest {
 	 */
 	protected InnerRequest innerRequest; 
 	
-	protected String lang = "";
+	protected String lang = "cat";
 	protected String versio; 
 	protected String format; 
-	protected String codifcacio ="";
+	protected String codifcacio ="UTF-8";
 	
 	public AbstractRequest(InnerRequest innerRequest) {
 		this.innerRequest = innerRequest;
@@ -149,8 +149,14 @@ public abstract class AbstractRequest {
 	 * @param resultat
 	 */
 	// TODO com a variable protegida de la classe abstracte.
-	protected void inicialitzarParametres(StringBuffer resultat) {
-		// http://api.idescat.cat
+	protected void inicialitzarParametres(StringBuffer resultat) throws InvalidUrlException {
+	  if (getServei() == null) {
+	    throw new InvalidUrlException("Missing service name.");
+	  } else if (getOperacioString() == null) {
+	    throw new InvalidUrlException("Missing Operation."); 
+	  }
+	  // http://api.idescat.cat
+	  
 		resultat.append(this.BASE);
 		resultat.append(getServei());
 		resultat.append("/");

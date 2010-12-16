@@ -21,9 +21,9 @@ import net.loststone.idescat.common.Format;
  */
 public class PoblacionsRequest extends AbstractRequest {
 
-	public enum operacio { cerca, sug }
-	public enum tipus { cat, prov, com, mun, ec, es, np, dis}
-	public enum order { tipus, nom }
+	public static enum operacio { cerca, sug }
+	public static enum tipus { cat, prov, com, mun, ec, es, np, dis}
+	public static enum order { tipus, nom }
 	
 	// el servei es poblacio
 	private final String servei = "pob";
@@ -116,6 +116,9 @@ public class PoblacionsRequest extends AbstractRequest {
 		this.orderBy = t;
 	}
 	
+	public order getOrderBy() {
+	  return this.orderBy;
+	}
 	/**
 	 * Especifica la posicio per la qual comencaran els resultats.
 	 * Podeu trobar mes informacio a: http://www.idescat.cat/api/pob/#a1.2.2.4
@@ -123,6 +126,10 @@ public class PoblacionsRequest extends AbstractRequest {
 	public void setPosicio(int posicio) {
 		if (posicio >= 0)
 			this.posicio = posicio;
+	}
+	
+	public int getPosicio() {
+	  return this.posicio;
 	}
 	
 	@Override
@@ -157,7 +164,6 @@ public class PoblacionsRequest extends AbstractRequest {
 	
 	@Override
 	public String getUrl() throws InvalidUrlException {
-		boolean setFirstParam = true;
 		StringBuffer resultat = new StringBuffer();
 		
 		// crear la peticio base amb els parametres comuns.
@@ -165,15 +171,13 @@ public class PoblacionsRequest extends AbstractRequest {
 		
 		// posem el fitreQ en cas de que hi sigui.
 		if (filtreQ != null) {
-			setConector(resultat, setFirstParam);
-			setFirstParam = false;
+			setConector(resultat, false);
 			resultat.append("q=").append(this.filtreQ);
 		}
 		
 		// posem la llista de tipus, en cas de que hi sigui.
 		if (!filtresTipus.isEmpty()) {
-			setConector(resultat, setFirstParam);
-			setFirstParam = false;
+			setConector(resultat, false);
 			resultat.append("tipus=");
 			Iterator<tipus> it = this.filtresTipus.iterator();
 			while (it.hasNext()) {
@@ -189,8 +193,7 @@ public class PoblacionsRequest extends AbstractRequest {
 		
 			// parametre sim.
 			if (!getSim().isEmpty()) {
-				setConector(resultat, setFirstParam);
-				setFirstParam = false;
+				setConector(resultat, false);
 				resultat.append("sim=");
 				Iterator<Integer> it = this.getSim().iterator();
 				while (it.hasNext()) {
@@ -202,8 +205,7 @@ public class PoblacionsRequest extends AbstractRequest {
 			}
 			
 			// parametre selec
-			setConector(resultat, setFirstParam);
-			setFirstParam = false;
+			setConector(resultat, false);
 			resultat.append("selec=");
 			if (selec) {
 				resultat.append("1");
@@ -212,14 +214,12 @@ public class PoblacionsRequest extends AbstractRequest {
 			}
 			
 			// parametre orderBy
-			setConector(resultat, setFirstParam);
-			setFirstParam = false;
+			setConector(resultat, false);
 			resultat.append("orderby=");
 			resultat.append(orderBy.toString());
 			
 			// parametre posicio
-			setConector(resultat, setFirstParam);
-			setFirstParam = false;
+			setConector(resultat, false);
 			resultat.append("posicio=");
 			resultat.append(posicio);
 		}
