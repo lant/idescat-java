@@ -20,12 +20,12 @@ import net.loststone.idescat.InvalidUrlException;
  */
 public class EmexRequest extends AbstractRequest {
 
-	public enum operacio { nodes, dades }
+	public static enum operacio { nodes, dades }
 	
 	// el servei es emex
 	private final String servei = "emex";
 
-	private int municipiId = -1; 
+	private String municipiId = null; 
 
 	private operacio op; 
 
@@ -41,11 +41,11 @@ public class EmexRequest extends AbstractRequest {
 	/**
 	 * Defineix el municipi que utilitzarem.
 	 */
-	public void setMunicipiId(int id) {
+	public void setMunicipiId(String id) {
 		this.municipiId = id; 	
 	}
 
-	public int getMunicipiId() {
+	public String getMunicipiId() {
 		return municipiId;	
 	}
 
@@ -59,10 +59,10 @@ public class EmexRequest extends AbstractRequest {
 		// en cas de que sigui l'operacio dades mirem si hi ha els 
 		// demes parametres.
 		if (this.op == operacio.dades) {
-			if (getMunicipiId() != -1) {
+			if (getMunicipiId() == null) {
 				throw new InvalidUrlException("L'operacio 'dades' del metode 'emex' necessita un camp 'id'");			
 			}
-			setConector(resultat,true);
+			setConector(resultat,false);
 			resultat.append("id=");
 			resultat.append(getMunicipiId());
 		}
@@ -134,7 +134,7 @@ public class EmexRequest extends AbstractRequest {
 	}
 	
 	/**
-	 * Afegeix un indicador a la llista d'indicadors que s'utilitzar� per par�metre.
+	 * Afegeix un indicador a la llista d'indicadors que s'utilitzara per parametre.
 	 * @param indicador
 	 */
 	public void addIndicador(String indicador) {
