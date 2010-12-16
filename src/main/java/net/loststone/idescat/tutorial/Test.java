@@ -46,7 +46,7 @@ public class Test {
     request = factory.getIndicadorsRequest();
     
     // especifiquem que volem l'indicador 5109
-    request.addIndicador(5109);
+    request.addIndicador("5109");
     // especifiquem quin tipus d'operaicó volem
     request.setOperacio(IndicadorsRequest.operacio.dades);
     try {
