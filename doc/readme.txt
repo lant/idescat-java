@@ -20,3 +20,14 @@ Però si voleu modificar o bé construir manualment el projecte haureu de seguir
 2) Executar: gradle des de l'arrel del projecte. 
 Això hauria de crear un directori $PROJECTE/build/libs/idescat-java-X.X.jar amb la llibreria. Podreu trobar les dependències al directori $PROJECTE/lib/
 
+Les dependències són: 
+
+Build / Test: 
+- junit-4.8.2.jar  
+- mockito-all-1.8.5.jar
+
+Runtime: 
+- commons-codec-1.2.jar  
+- commons-httpclient-3.1.jar  
+- commons-logging-1.0.4.jar  
+- joda-time-1.6.jar 
